@@ -1,0 +1,8 @@
+basic frontend website 
+about me 
+photo 
+resume
+contact panel 
+header footer nav bar 
+animations if possible
+html,css,javascript
