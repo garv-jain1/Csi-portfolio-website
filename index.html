@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Website</title>
+    <link rel="stylesheet" href="style.css"  >
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="garvlogo2.png" class="logo" >
+                <ul>
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About </a></li>
+                    <li><a href="#contact">Resume</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>  
+            <div class="header-text">
+                <p>PORTFOLIO WEBSITE</p>
+                <h1>Hi, I am <span>Garv Jain</span></h1>
+            </div>
+   </div>
+<!-----About Me----->
+<div id="about">
+    <div class="container">
+        <div class="row">
+            <div class="about-col-1">
+                <img class="img-2" src="aboutme.png" class="imgx" width="400" height="400" >
+            </div>
+            <div class="about-col-2">
+                <h1 class="sub-title">About Me</h1>
+                <p class="ptag">I am a fresher at Vit Vellore pursuing Computer Science with specialisation in Data Science.<br> My hobbies are reading and swimming. I couldnt find any good pictures. *clown emoji*</p>
+                <div class="tab-titles">
+                    <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                    <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                    <p class="tab-links" onclick="opentab('education')">Education</p>
+                </div>
+                <div class="tab-contents active-tab" id="skills">
+                    <ul>
+                        <li><span>Management</span><br>Can deal with situations, good at communication</li>
+                        <li><span>Web Developer</span><br>Learning Stage</li>
+                    </ul>
+                </div>
+                <div class="tab-contents" id="experience">
+                    <ul>
+                        <li><span>2003-2023</span><br>Existence</li>
+                    </ul>
+                </div>
+                <div class="tab-contents" id="education">
+                    <ul>
+                        <li><span>2022-Present</span><br>B.Tech in Computer Science with specialisation in Data Science, Vit Vellore</li>
+                        <li><span>2020-2022</span><br>Alard Public School,Pune</li>
+                        <li><span>2013-2020</span><br>St.Michael's School,Siliguri</li>
+                        <li><span>2010-2013</span><br>Vibgyor High School,Pune</li>
+                        <li><span>2008-2010</span><br>Don Bosco School,Siliguri</li>
+                        <li><span>2005-2008</span><br>Bright Academy,Siliguri</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!---contact-->
+<div id="contact">
+    <div id="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Me</h1>
+                <p>garvjainpb@gmail.com</p>
+                <p>9775000123</p>
+                <a href="CV.pdf" download class="btn btn2 ">Download CV</a>
+            </div>
+                
+                <div class="contact-right">
+                    <form name="submit-to-google-sheet">
+                        <input type="text" name="Name" placeholder="Your Name" required>
+                        <input type="email" name="Email" placeholder="Your Email" required>
+                        <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                        <button type="submit" class="btn btn2">Submit</button>
+                    </form>
+                    <span id="msg"></span>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>Copyright ©2023 Garv Jain. All rights reserved </p>
+    </div>
+</div>
+
+<script>
+   
+    
+    function opentab(tabname) {
+    var tablinks= document.getElementsByClassName("tab-links")
+    var tabcontents= document.getElementsByClassName("tab-contents")
+    var switch_table=document.getElementById(tabname)
+    console.log(switch_table)
+    
+        for(tablink of tablinks){
+            tablink.classList.remove("active-link");
+        }
+        for(tabcontent of tabcontents){
+            tabcontent.classList.remove("active-tab");
+        }
+        event.currentTarget.classList.add("active-link");
+        switch_table.classList.add("active-tab")
+    }
+</script>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzinp5HBbQAj-Dasf0E4GP-Hrfh4WUHwOS0yoJBEPwuywna_LoiRNRNK__SeEnJWAw/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg=document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {msg.innerHTML="Message Sent Successfully"
+    setTimeout(function(){
+        msg.innerHTML=""
+    },5000)
+    form.reset()
+    })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+</body>
+</html>
